@@ -1,0 +1,22 @@
+{
+    "name": "micro/plugin-console",
+    "description": "Micro Framework: Console application component",
+    "type": "library",
+    "version": "0.1",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Micro\\Plugin\\Console\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Stanislau.Komar",
+            "email": "stanislau_komar@epam.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "symfony/console": "^6.0"
+    }
+}
