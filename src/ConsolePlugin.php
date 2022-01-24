@@ -24,9 +24,11 @@ class ConsolePlugin extends AbstractPlugin implements ApplicationListenerProvide
     {
         $this->container = $container;
 
-        $container->register(ConsoleApplicationFacadeInterface::class, function (Container $container) {
-            return new ConsoleApplicationFacade();
-        });
+        $container->register(
+            ConsoleApplicationFacadeInterface::class, function (Container $container) {
+                return new ConsoleApplicationFacade($container);
+            }
+        );
     }
 
     /**
@@ -50,7 +52,7 @@ class ConsolePlugin extends AbstractPlugin implements ApplicationListenerProvide
     }
 
     /**
-     * @param Container $container
+     * @param  Container $container
      * @return ConsoleApplicationFacadeInterface
      */
     protected function lookupConsoleApplicationFacade(Container $container): ConsoleApplicationFacadeInterface

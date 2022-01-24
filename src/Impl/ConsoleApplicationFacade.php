@@ -2,6 +2,8 @@
 
 namespace Micro\Plugin\Console\Impl;
 
+use Micro\Component\DependencyInjection\Container;
+use Micro\Plugin\Console\CommandProviderInterface;
 use Micro\Plugin\Console\ConsoleApplicationFacadeInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
@@ -13,7 +15,7 @@ class ConsoleApplicationFacade implements ConsoleApplicationFacadeInterface
      */
     private ?Application $consoleApplication;
 
-    public function __construct()
+    public function __construct(private Container $container)
     {
         $this->initApplication();
     }
@@ -28,6 +30,16 @@ class ConsoleApplicationFacade implements ConsoleApplicationFacadeInterface
         }
 
         $this->consoleApplication->add($command);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function provideCommands(CommandProviderInterface $commandProvider): void
+    {
+        foreach ($commandProvider->provideCommands($this->container) as $command) {
+            $this->registerCommand($command);
+        }
     }
 
     /**

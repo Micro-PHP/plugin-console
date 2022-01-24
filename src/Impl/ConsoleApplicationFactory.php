@@ -11,6 +11,9 @@ class ConsoleApplicationFactory
      */
     public function create(): Application
     {
-        return new Application();
+        $application =  new Application();
+        $application->setAutoExit(false);
+
+        return $application;
     }
 }
