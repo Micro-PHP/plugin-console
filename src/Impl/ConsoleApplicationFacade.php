@@ -37,7 +37,7 @@ class ConsoleApplicationFacade implements ConsoleApplicationFacadeInterface
      */
     public function provideCommands(CommandProviderInterface $commandProvider): void
     {
-        foreach ($commandProvider->provideCommands($this->container) as $command) {
+        foreach ($commandProvider->provideConsoleCommands($this->container) as $command) {
             $this->registerCommand($command);
         }
     }

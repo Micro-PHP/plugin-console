@@ -11,5 +11,5 @@ interface CommandProviderInterface
      * @param Container $container
      * @return Command[]
      */
-    public function provideCommands(Container $container): array;
+    public function provideConsoleCommands(Container $container): array;
 }
