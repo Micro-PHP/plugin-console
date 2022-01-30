@@ -9,6 +9,7 @@ use Micro\Framework\Kernel\Plugin\AbstractPlugin;
 use Micro\Kernel\App\Business\ApplicationListenerProviderPluginInterface;
 use Micro\Plugin\Console\Impl\ConsoleApplicationFacade;
 use Micro\Plugin\Console\Listener\ApplicationStartEventListener;
+use Micro\Plugin\Console\Listener\EventListenerProvider;
 
 class ConsolePlugin extends AbstractPlugin implements ApplicationListenerProviderPluginInterface
 {
@@ -34,11 +35,11 @@ class ConsolePlugin extends AbstractPlugin implements ApplicationListenerProvide
     /**
      * {@inheritDoc}
      */
-    public function provideEventListeners(): array
+    public function getEventListenerProvider(): ListenerProviderInterface
     {
-        return [
-            $this->createConsoleApplicationListener(),
-        ];
+        return new EventListenerProvider(
+            $this->createConsoleApplicationListener()
+        );
     }
 
     /**
