@@ -15,7 +15,6 @@
             "email": "stanislau_komar@epam.com"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
         "php": ">=8.0",
         "symfony/console": "^6.0"
