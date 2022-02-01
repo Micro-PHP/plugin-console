@@ -13,6 +13,7 @@ class ConsoleApplicationFactory
     {
         $application =  new Application();
         $application->setAutoExit(false);
+        //$application->setCatchExceptions(true);
 
         return $application;
     }

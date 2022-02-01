@@ -4,7 +4,6 @@ namespace Micro\Plugin\Console\Listener;
 
 use Micro\Component\EventEmitter\EventListenerInterface;
 use Micro\Component\EventEmitter\Impl\Provider\AbstractListenerProvider;
-use Micro\Plugin\Console\ConsolePlugin;
 
 class EventListenerProvider extends AbstractListenerProvider
 {
