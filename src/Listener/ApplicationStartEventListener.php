@@ -2,20 +2,26 @@
 
 namespace Micro\Plugin\Console\Listener;
 
+use Micro\Component\DependencyInjection\Autowire\AutowireHelperInterface;
 use Micro\Component\EventEmitter\EventInterface;
 use Micro\Component\EventEmitter\EventListenerInterface;
-use Micro\Framework\Kernel\Plugin\ApplicationPluginInterface;
-use Micro\Kernel\App\AppKernelInterface;
 use Micro\Kernel\App\Business\Event\ApplicationReadyEvent;
-use Micro\Plugin\Console\CommandProviderInterface;
 use Micro\Plugin\Console\ConsoleApplicationFacadeInterface;
+use Micro\Plugin\Locator\Facade\LocatorFacadeInterface;
+use Symfony\Component\Console\Command\Command;
 
 class ApplicationStartEventListener implements EventListenerInterface
 {
     /**
+     * @param LocatorFacadeInterface $locatorFacade
      * @param ConsoleApplicationFacadeInterface $consoleApplication
+     * @param AutowireHelperInterface $autowireHelper
      */
-    public function __construct(private ConsoleApplicationFacadeInterface $consoleApplication)
+    public function __construct(
+        private readonly LocatorFacadeInterface $locatorFacade,
+        private readonly ConsoleApplicationFacadeInterface $consoleApplication,
+        private readonly AutowireHelperInterface $autowireHelper
+    )
     {
     }
 
@@ -41,28 +47,16 @@ class ApplicationStartEventListener implements EventListenerInterface
      */
     protected function registerCommands(ApplicationReadyEvent $event): void
     {
-        foreach ($event->kernel()->plugins() as $plugin) {
-            $this->registerPluginCommands($plugin);
+        foreach ($this->locatorFacade->lookup(Command::class) as $command) {
+            $cmdCallback = $this->autowireHelper->autowire($command);
+            $this->consoleApplication->registerCommand($cmdCallback());
         }
-    }
-
-    /**
-     * @param ApplicationPluginInterface $plugin
-     * @return void
-     */
-    protected function registerPluginCommands(ApplicationPluginInterface $plugin): void
-    {
-        if(!$plugin instanceof CommandProviderInterface) {
-            return;
-        }
-
-        $this->consoleApplication->provideCommands($plugin);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function supports(EventInterface $event): bool
+    public static function supports(EventInterface $event): bool
     {
         return $event instanceof ApplicationReadyEvent;
     }

@@ -1,14 +1,12 @@
 <?php
 
-namespace Micro\Plugin\Console;
+namespace Micro\Plugin\Console\Plugin;
 
 use Micro\Component\DependencyInjection\Container;
 use Symfony\Component\Console\Command\Command;
+use \Micro\Plugin\Console\CommandProviderInterface as DeprecatedCommandProviderInterfaceDeprecated;
 
-/**
- * @deprecated
- */
-interface CommandProviderInterface
+interface CommandProviderInterface extends DeprecatedCommandProviderInterfaceDeprecated
 {
     /**
      * @param Container $container
