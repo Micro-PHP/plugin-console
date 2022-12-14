@@ -2,7 +2,7 @@
     "name": "micro/plugin-console",
     "description": "Micro Framework: Console application component",
     "type": "library",
-    "version": "1.0",
+    "version": "1.1",
     "license": "MIT",
     "autoload": {
         "psr-4": {

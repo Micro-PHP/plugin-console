@@ -8,6 +8,7 @@ use Micro\Plugin\Console\Impl\ConsoleApplicationFacade;
 
 class ConsolePlugin extends AbstractPlugin
 {
+    private readonly Container $container;
     /**
      * {@inheritDoc}
      */
