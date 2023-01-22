@@ -1,56 +1,40 @@
 <?php
 
+/*
+ *  This file is part of the Micro framework package.
+ *
+ *  (c) Stanislau Komar <kost@micro-php.net>
+ *
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ */
+
 namespace Micro\Plugin\Console\Listener;
 
-use Micro\Component\DependencyInjection\Autowire\AutowireHelperInterface;
 use Micro\Component\EventEmitter\EventInterface;
 use Micro\Component\EventEmitter\EventListenerInterface;
-use Micro\Kernel\App\Business\Event\ApplicationReadyEvent;
-use Micro\Plugin\Console\ConsoleApplicationFacadeInterface;
-use Micro\Plugin\Locator\Facade\LocatorFacadeInterface;
-use Symfony\Component\Console\Command\Command;
+use Micro\Kernel\App\Business\Event\ApplicationReadyEventInterface;
+use Micro\Plugin\Console\Facade\ConsoleApplicationFacadeInterface;
 
 class ApplicationStartEventListener implements EventListenerInterface
 {
-    /**
-     * @param LocatorFacadeInterface $locatorFacade
-     * @param ConsoleApplicationFacadeInterface $consoleApplication
-     * @param AutowireHelperInterface $autowireHelper
-     */
     public function __construct(
-        private readonly LocatorFacadeInterface $locatorFacade,
-        private readonly ConsoleApplicationFacadeInterface $consoleApplication,
-        private readonly AutowireHelperInterface $autowireHelper
-    )
-    {
+        private readonly ConsoleApplicationFacadeInterface $consoleApplicationFacade,
+    ) {
     }
 
     /**
-     * @param ApplicationReadyEvent $event
+     * @param ApplicationReadyEventInterface $event
      *
      * @throws \Exception
      */
     public function on(EventInterface $event): void
     {
-        if(!$this->consoleApplication->isCli()) {
+        if (!str_contains($event->systemEnvironment(), 'cli')) {
             return;
         }
 
-        $this->registerCommands($event);
-
-        $this->consoleApplication->run();
-    }
-
-    /**
-     * @param ApplicationReadyEvent $event
-     * @return void
-     */
-    protected function registerCommands(ApplicationReadyEvent $event): void
-    {
-        foreach ($this->locatorFacade->lookup(Command::class) as $command) {
-            $cmdCallback = $this->autowireHelper->autowire($command);
-            $this->consoleApplication->registerCommand($cmdCallback());
-        }
+        $this->consoleApplicationFacade->run();
     }
 
     /**
@@ -58,6 +42,6 @@ class ApplicationStartEventListener implements EventListenerInterface
      */
     public static function supports(EventInterface $event): bool
     {
-        return $event instanceof ApplicationReadyEvent;
+        return $event instanceof ApplicationReadyEventInterface;
     }
 }
