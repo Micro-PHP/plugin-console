@@ -30,7 +30,7 @@ class ApplicationStartEventListener implements EventListenerInterface
      */
     public function on(EventInterface $event): void
     {
-        if (!str_contains($event->systemEnvironment(), 'cli')) {
+        if ('cli' !== $event->systemEnvironment()) {
             return;
         }
 
