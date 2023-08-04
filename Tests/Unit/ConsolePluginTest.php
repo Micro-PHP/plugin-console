@@ -11,11 +11,11 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Console\Test\Unit;
+namespace Micro\Plugin\Console\Tests\Unit;
 
-use Micro\Component\DependencyInjection\Autowire\ContainerAutowire;
-use Micro\Component\DependencyInjection\Container;
-use Micro\Framework\Kernel\Plugin\DependencyProviderInterface;
+use Micro\Framework\Autowire\ContainerAutowire;
+use Micro\Framework\DependencyInjection\Container;
+use Micro\Framework\BootDependency\Plugin\DependencyProviderInterface;
 use Micro\Plugin\Console\ConsolePlugin;
 use Micro\Plugin\Console\Facade\ConsoleApplicationFacadeInterface;
 use Micro\Plugin\Locator\Facade\LocatorFacadeInterface;

@@ -11,10 +11,10 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Console\Test\Unit\Listener;
+namespace Micro\Plugin\Console\Tests\Unit\Listener;
 
-use Micro\Component\EventEmitter\EventInterface;
-use Micro\Kernel\App\Business\Event\ApplicationReadyEventInterface;
+use Micro\Framework\EventEmitter\EventInterface;
+use Micro\Framework\KernelApp\Business\Event\ApplicationReadyEventInterface;
 use Micro\Plugin\Console\Facade\ConsoleApplicationFacadeInterface;
 use Micro\Plugin\Console\Listener\ApplicationStartEventListener;
 use PHPUnit\Framework\TestCase;

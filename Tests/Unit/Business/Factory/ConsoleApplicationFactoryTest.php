@@ -11,7 +11,7 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Console\Test\Unit\Business\Factory;
+namespace Micro\Plugin\Console\Tests\Unit\Business\Factory;
 
 use Micro\Component\DependencyInjection\Autowire\AutowireHelperInterface;
 use Micro\Plugin\Console\Business\Factory\ConsoleApplicationFactory;

@@ -11,7 +11,7 @@
 
 namespace Micro\Plugin\Console\Business\Factory;
 
-use Micro\Component\DependencyInjection\Autowire\AutowireHelperInterface;
+use Micro\Framework\Autowire\AutowireHelperInterface;
 use Micro\Plugin\Locator\Facade\LocatorFacadeInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;

@@ -10,9 +10,9 @@
         }
     ],
     "require": {
-        "micro/kernel-app": "^1.6",
-        "micro/kernel-boot-dependency": "^1.6",
-        "micro/plugin-locator": "^1.6",
+        "micro/kernel-app": "^2.0",
+        "micro/kernel-boot-dependency": "^2.0",
+        "micro/plugin-locator": "^2.0",
         "symfony/console": "^6.0"
     },
     "require-dev": {
@@ -25,13 +25,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Micro\\Plugin\\Console\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Micro\\Plugin\\Console\\Test\\Unit\\": "tests/Unit"
-        }
+            "Micro\\Plugin\\Console\\": "/"
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
     },
     "config": {
         "allow-plugins": {
@@ -39,24 +37,5 @@
         },
         "sort-packages": true
     },
-    "scripts": {
-        "coverage": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text",
-        "coverage-html": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html ./test-coverage-report",
-        "php-cs-fix": "PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --verbose --using-cache=no",
-        "php-cs-try": "PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --verbose --dry-run --using-cache=no",
-        "phpstan": "./vendor/bin/phpstan analyze --no-progress",
-        "phpunit": "./vendor/bin/phpunit",
-        "psalm": "./vendor/bin/psalm --no-progress --show-info=true",
-        "statics": [
-            "@phpstan",
-            "@psalm",
-            "@php-cs-try"
-        ],
-        "test": [
-            "@statics",
-            "composer validate --strict",
-            "composer normalize",
-            "@coverage"
-        ]
-    }
+    "minimum-stability": "dev"
 }

@@ -11,7 +11,7 @@ declare(strict_types=1);
  *  file that was distributed with this source code.
  */
 
-namespace Micro\Plugin\Console\Test\Unit\Facade;
+namespace Micro\Plugin\Console\Tests\Unit\Facade;
 
 use Micro\Plugin\Console\Business\Factory\ConsoleApplicationFactoryInterface;
 use Micro\Plugin\Console\Facade\ConsoleApplicationFacade;

@@ -11,9 +11,9 @@
 
 namespace Micro\Plugin\Console\Listener;
 
-use Micro\Component\EventEmitter\EventInterface;
-use Micro\Component\EventEmitter\EventListenerInterface;
-use Micro\Kernel\App\Business\Event\ApplicationReadyEventInterface;
+use Micro\Framework\EventEmitter\EventInterface;
+use Micro\Framework\EventEmitter\EventListenerInterface;
+use Micro\Framework\KernelApp\Business\Event\ApplicationReadyEventInterface;
 use Micro\Plugin\Console\Facade\ConsoleApplicationFacadeInterface;
 
 class ApplicationStartEventListener implements EventListenerInterface
@@ -37,9 +37,6 @@ class ApplicationStartEventListener implements EventListenerInterface
         $this->consoleApplicationFacade->run();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public static function supports(EventInterface $event): bool
     {
         return $event instanceof ApplicationReadyEventInterface;
