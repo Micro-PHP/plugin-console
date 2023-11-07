@@ -20,9 +20,6 @@ class ConsoleApplicationFacade implements ConsoleApplicationFacadeInterface
     ) {
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function run(): int
     {
         return $this->consoleApplicationFactory

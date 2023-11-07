@@ -30,16 +30,13 @@ class ApplicationStartEventListener implements EventListenerInterface
      */
     public function on(EventInterface $event): void
     {
-        if ('cli' !== $event->systemEnvironment()) {
+        if ('cli' !== $event->systemEnvironment() || \array_key_exists('RR_MODE', $_ENV)) {
             return;
         }
 
         $this->consoleApplicationFacade->run();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public static function supports(EventInterface $event): bool
     {
         return $event instanceof ApplicationReadyEventInterface;
