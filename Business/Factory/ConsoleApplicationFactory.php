@@ -16,11 +16,11 @@ use Micro\Plugin\Locator\Facade\LocatorFacadeInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
 
-class ConsoleApplicationFactory implements ConsoleApplicationFactoryInterface
+readonly class ConsoleApplicationFactory implements ConsoleApplicationFactoryInterface
 {
     public function __construct(
-        private readonly LocatorFacadeInterface $locatorFacade,
-        private readonly AutowireHelperInterface $autowireHelper
+        private LocatorFacadeInterface $locatorFacade,
+        private AutowireHelperInterface $autowireHelper
     ) {
     }
 

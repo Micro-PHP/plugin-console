@@ -11,8 +11,8 @@
 
 namespace Micro\Plugin\Console;
 
-use Micro\Component\DependencyInjection\Autowire\AutowireHelperFactory;
-use Micro\Component\DependencyInjection\Autowire\AutowireHelperFactoryInterface;
+use Micro\Framework\Autowire\AutowireHelperFactory;
+use Micro\Framework\Autowire\AutowireHelperFactoryInterface;
 use Micro\Framework\DependencyInjection\Container;
 use Micro\Framework\BootDependency\Plugin\DependencyProviderInterface;
 use Micro\Plugin\Console\Business\Factory\ConsoleApplicationFactory;

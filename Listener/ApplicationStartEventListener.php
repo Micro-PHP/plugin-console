@@ -16,10 +16,10 @@ use Micro\Framework\EventEmitter\EventListenerInterface;
 use Micro\Framework\KernelApp\Business\Event\ApplicationReadyEventInterface;
 use Micro\Plugin\Console\Facade\ConsoleApplicationFacadeInterface;
 
-class ApplicationStartEventListener implements EventListenerInterface
+readonly class ApplicationStartEventListener implements EventListenerInterface
 {
     public function __construct(
-        private readonly ConsoleApplicationFacadeInterface $consoleApplicationFacade,
+        private ConsoleApplicationFacadeInterface $consoleApplicationFacade,
     ) {
     }
 

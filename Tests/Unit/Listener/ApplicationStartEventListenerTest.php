@@ -58,7 +58,7 @@ class ApplicationStartEventListenerTest extends TestCase
         $this->assertFalse(ApplicationStartEventListener::supports(new class() implements EventInterface {}));
     }
 
-    public function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [true],

@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Micro\Plugin\Console\Tests\Unit\Business\Factory;
 
-use Micro\Component\DependencyInjection\Autowire\AutowireHelperInterface;
+use Micro\Framework\Autowire\AutowireHelperInterface;
 use Micro\Plugin\Console\Business\Factory\ConsoleApplicationFactory;
 use Micro\Plugin\Locator\Facade\LocatorFacadeInterface;
 use PHPUnit\Framework\TestCase;

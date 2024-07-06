@@ -13,10 +13,10 @@ namespace Micro\Plugin\Console\Facade;
 
 use Micro\Plugin\Console\Business\Factory\ConsoleApplicationFactoryInterface;
 
-class ConsoleApplicationFacade implements ConsoleApplicationFacadeInterface
+readonly class ConsoleApplicationFacade implements ConsoleApplicationFacadeInterface
 {
     public function __construct(
-        private readonly ConsoleApplicationFactoryInterface $consoleApplicationFactory
+        private ConsoleApplicationFactoryInterface $consoleApplicationFactory
     ) {
     }
 
